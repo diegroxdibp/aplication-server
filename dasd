@@ -1,0 +1,25 @@
+*   [33m119aae6[m[33m ([m[1;31morigin/master[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mmaster[m[33m)[m Merge branch 'master' of https://github.com/diegroxdibp/aplication-server
+[31m|[m[32m\[m  
+[31m|[m *   [33mf2c6f7a[m Merge branch 'master' of https://github.com/diegroxdibp/aplication-server
+[31m|[m [33m|[m[34m\[m  
+[31m|[m [33m|[m *   [33mb18e873[m https and merge conflicts resolved
+[31m|[m [33m|[m [35m|[m[36m\[m  
+[31m|[m [33m|[m [35m|[m * [33m09f87a2[m names api inital commit
+[31m|[m [33m|[m * [36m|[m [33m7797b85[m https
+[31m|[m [33m|[m [36m|[m[36m/[m  
+[31m|[m * [36m/[m [33m853fe24[m pleasekillme
+[31m|[m [36m|[m[36m/[m  
+* [36m/[m [33m8438e2d[m bttf
+[36m|[m[36m/[m  
+* [33m8bdd062[m[33m ([m[1;36mHEAD -> [m[1;32mtemp[m[33m)[m token duration from 30 to 1 day
+* [33md1b54a6[m public access to source path
+* [33m6e16243[m panel sources
+* [33m438f0d6[m dependencies update
+* [33m0e991f1[m insomnia file update
+* [33m38a06fc[m search by email like plus wildcard
+* [33m325803e[m Set roles added
+* [33m69c5d5d[m get user by email
+* [33mb5d2587[m Isomnia file added
+* [33m815ad53[m added role to payload and renamed method of logger
+* [33m8e93c9c[m mvp ready
+* [33mb79b897[m initial commit
