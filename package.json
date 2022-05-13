@@ -1,7 +1,11 @@
 {
-  "name": "node-api",
+  "name": "names-api",
   "version": "1.0.0",
-  "description": "Node api scaffold",
+<<<<<<< HEAD
+  "description": "Comercial pannel",
+=======
+  "description": "Node names api",
+>>>>>>> 09f87a25fbe682e7f98a561845795dcce657eeb7
   "main": "index.js",
   "author": "contact@diegoponte.eu",
   "scripts": {
@@ -32,7 +36,6 @@
     "@types/jest": "^27.4.1",
     "@types/jsonwebtoken": "^8.5.8",
     "@types/luxon": "^2.3.0",
-    "@types/morgan": "^1.9.3",
     "@typescript-eslint/eslint-plugin": "^5.15.0",
     "@typescript-eslint/parser": "^5.15.0",
     "babel-plugin-module-resolver": "^4.1.0",
