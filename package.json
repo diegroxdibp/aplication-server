@@ -1,11 +1,7 @@
 {
   "name": "names-api",
   "version": "1.0.0",
-<<<<<<< HEAD
   "description": "Comercial pannel",
-=======
-  "description": "Node names api",
->>>>>>> 09f87a25fbe682e7f98a561845795dcce657eeb7
   "main": "index.js",
   "author": "contact@diegoponte.eu",
   "scripts": {
