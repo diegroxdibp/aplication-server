@@ -10,7 +10,7 @@ class AuthController {
 		try {
 			console.log(req.body);
 			const token = await AuthRepository.attemptLogin(req.body.email, req.body.password);
-			const { email, role }: User = (verify(token, 'MyVerySecretKeyForSigningToken') as User);
+			const { email, role }: User = (verify(token, process.env.TOKEN_SIGN_KEY!) as User);
 
 			const metadata: Metadata = { method: req.method, url: req.url, headers: req.rawHeaders };
 			await LoggerRepository.addToLoginLogs(email, metadata);

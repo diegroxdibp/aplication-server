@@ -2,12 +2,8 @@ import { createHash } from "crypto";
 import { User } from "../models/user";
 import { queryBuilder } from "../core/database";
 import { sign } from "jsonwebtoken";
-
 export default class AuthRepository {
-  public static async attemptLogin(
-    email: string,
-    password: string
-  ): Promise<string> {
+  public static async attemptLogin(email: string, password: string): Promise<string> {
     password = createHash("sha256").update(password).digest("hex");
 
     const user: User = await queryBuilder
@@ -25,7 +21,7 @@ export default class AuthRepository {
           user_id: user.user_id,
           role: user.role,
         },
-        "MyVerySecretKeyForSigningToken"
+        process.env.TOKEN_SIGN_KEY!
       );
 
       return token;
@@ -48,10 +44,7 @@ export default class AuthRepository {
     }
   }
 
-  public static async register(
-    email: string,
-    password: string
-  ): Promise<number> {
+  public static async register(email: string, password: string): Promise<number> {
     password = createHash("sha256").update(password).digest("hex");
     const role = "user";
     const [user_id] = await queryBuilder

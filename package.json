@@ -1,7 +1,7 @@
 {
-  "name": "names-api",
+  "name": "commercial-panel",
   "version": "1.0.0",
-  "description": "Comercial pannel",
+  "description": "Comercial panel",
   "main": "index.js",
   "author": "contact@diegoponte.eu",
   "scripts": {
