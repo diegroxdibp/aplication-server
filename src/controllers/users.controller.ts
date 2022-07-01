@@ -35,6 +35,28 @@ class UsersController {
 		return res.json(user);
 	}
 
+	public async deactivateUserById (req: Request, res: Response): Promise<Response> {
+		const user_id = req.params.id;
+		const user = await UsersRepository.deactivateById(Number(user_id));
+		console.log(user);
+		if (user) {
+			return res.status(200).json({
+				code: 200,
+				message: `User of ID ${user_id} deactivated successfully!`
+			});
+		}
+		return res.status(404).json({
+			code: 404,
+			message: `User of ID ${user_id} not found`
+		});
+	}
+
+	public async deactivateUserByEmail (req: Request, res: Response): Promise<Response> {
+		const { email } = req.params;
+		const user = await UsersRepository.deactivateByEmail(String(email));
+
+		return res.json(user);
+	}
 	public async deletetUserById (req: Request, res: Response): Promise<Response> {
 		const user_id = req.params.id;
 		const user = await UsersRepository.deleteById(Number(user_id));
@@ -42,7 +64,7 @@ class UsersController {
 		if (user) {
 			return res.status(200).json({
 				code: 200,
-				message: `User of ID ${user_id} deleted successfully!`
+				message: `User of ID ${user_id} deactivated successfully!`
 			});
 		}
 		return res.status(404).json({
@@ -53,7 +75,7 @@ class UsersController {
 
 	public async deleteUserByEmail (req: Request, res: Response): Promise<Response> {
 		const { email } = req.params;
-		const user = await UsersRepository.byEmail(String(email));
+		const user = await UsersRepository.deleteByEmail(String(email));
 
 		return res.json(user);
 	}
