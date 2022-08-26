@@ -19,8 +19,9 @@ export default class AuthRepository {
 				exp: Math.floor(Date.now() / 1000) + (60 * 60 * 24 * 31),
 				email: user.email,
 				user_id: user.user_id,
-				role: user.role
-			}, 'MyVerySecretKeyForSigningToken');
+				role: user.role,
+				status: user.status
+			}, (process.env.DB_NAME as string));
 
 			return token;
 		}

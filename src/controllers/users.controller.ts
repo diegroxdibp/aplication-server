@@ -57,6 +57,38 @@ class UsersController {
 
 		return res.json(user);
 	}
+
+	public async activateUserById (req: Request, res: Response): Promise<Response> {
+		const user_id = req.params.id;
+		const user = await UsersRepository.activateById(Number(user_id));
+		if (!user) {
+			return res.status(404).json(`User of ID ${user_id} not found`);
+		}
+		return res.status(200).json(`User of ID ${user_id} activated successfully!`);
+	}
+
+	public async activateUserByEmail (req: Request, res: Response): Promise<Response> {
+		const { email } = req.params;
+		const user = await UsersRepository.activateByEmail(String(email));
+
+		return res.json(user);
+	}
+
+	public async deactivateUserById (req: Request, res: Response): Promise<Response> {
+		const user_id = req.params.id;
+		const user = await UsersRepository.deactivateById(Number(user_id));
+		if (!user) {
+			return res.status(404).json(`User of ID ${user_id} not found`);
+		}
+		return res.status(200).json(`User of ID ${user_id} deactivated successfully!`);
+	}
+
+	public async deactivateUserByEmail (req: Request, res: Response): Promise<Response> {
+		const { email } = req.params;
+		const user = await UsersRepository.deactivateByEmail(String(email));
+
+		return res.json(user);
+	}
 }
 
 export default new UsersController();

@@ -1,8 +1,10 @@
-import { Roles } from './roles';
+import { STATUS } from '../enums/status.enum';
+import { ROLES } from '../enums/roles.enum';
 
 export interface User {
     user_id: number;
     email: string;
     password: string;
-    role: Roles,
+    status: STATUS;
+    role: ROLES
 }

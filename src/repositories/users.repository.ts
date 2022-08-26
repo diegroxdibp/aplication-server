@@ -1,3 +1,4 @@
+import { STATUS } from '../enums/status.enum';
 import { queryBuilder } from '../core/database';
 import { User } from '../models/user';
 export default class UsersRepository {
@@ -15,12 +16,11 @@ export default class UsersRepository {
 			.first();
 	}
 
-	public static async byEmail (email: string): Promise<User> {
+	public static async byEmail (email: string): Promise<User[]> {
 		return queryBuilder
-			.select()
+			.select('*')
 			.from('userTable')
-			.where('email', '=', email)
-			.first();
+			.where('email', 'like', `${email}%`);
 	}
 
 	public static async deleteById (user_id: number): Promise<any> {
@@ -34,5 +34,29 @@ export default class UsersRepository {
 		return queryBuilder('userTable')
 			.where('email', '=', email)
 			.del();
+	}
+
+	public static async activateById (user_id: number): Promise<number> {
+		return queryBuilder('userTable')
+			.where('user_id', '=', user_id)
+			.update({ status: STATUS.ACTIVE });
+	}
+
+	public static async activateByEmail (email: string): Promise<void> {
+		return queryBuilder('userTable')
+			.where('email', '=', email)
+			.update({ status: STATUS.ACTIVE });
+	}
+
+	public static async deactivateById (user_id: number): Promise<number> {
+		return queryBuilder('userTable')
+			.where('user_id', '=', user_id)
+			.update({ status: STATUS.INACTIVE });
+	}
+
+	public static async deactivateByEmail (email: string): Promise<void> {
+		return queryBuilder('userTable')
+			.where('email', '=', email)
+			.update({ status: STATUS.INACTIVE });
 	}
 }
