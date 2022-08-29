@@ -5,17 +5,19 @@ import AppController from '../controllers/app.controller';
 import AuthorizationMiddleware from '../security/authorization.middleware';
 import LoggerController from '../controllers/logger.controller';
 import RolesController from '../controllers/roles.controller';
+import SourcesController from "../controllers/sources.controller";
 
 const router = Router();
 
-router.get('/', AppController.welcome);
+// Root
+router.get("/", AppController.welcome);
 
 // Auth
-router.post('/api/auth/login', AuthController.login);
-router.post('/api/auth/register', AuthController.signUp);
+router.post("/api/auth/login", AuthController.login);
+router.post("/api/auth/register", AuthController.signUp);
 
 // Logs
-router.get('/api/logs/login', LoggerController.loginLogs);
+router.get("/api/logs/login", LoggerController.loginLogs);
 
 // Users
 router.get('/api/users', UsersController.getAll);
@@ -27,5 +29,10 @@ router.patch('/api/users/roles/:id/user', AuthorizationMiddleware.adminOnly, Rol
 router.patch('/api/users/roles/:id/admin', AuthorizationMiddleware.adminOnly, RolesController.makeAdminById);
 router.patch('/api/users/status/:id/activate', AuthorizationMiddleware.adminOnly, UsersController.activateUserById);
 router.patch('/api/users/status/:id/deactivate', AuthorizationMiddleware.adminOnly, UsersController.deactivateUserById);
+
+// Sources
+router.post("/api/sources/path/set", AuthorizationMiddleware.adminOnly, SourcesController.setPath);
+router.get("/api/sources/path/get", SourcesController.getPath);
+router.get("/api/sources/path/history", AuthorizationMiddleware.adminOnly, SourcesController.getPathHistory);
 
 export default router;
